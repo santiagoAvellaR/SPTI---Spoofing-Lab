@@ -20,9 +20,9 @@ jobs:
           node-version: '22.x'
           cache: 'pnpm'
       - name: Install dependencies
-        run: pnpm install --prod
+        run: pnpm install
       - name: Zip artifact for deployment
-        run: zip -r release.zip ./node_modules ./*
+        run: zip -r release.zip ./node_modules ./package.json ./server.js ./*
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
