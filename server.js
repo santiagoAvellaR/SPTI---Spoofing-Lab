@@ -35,9 +35,10 @@ const corOptions = {
     methods: ['GET', 'POST'],
 };
 app.use(cors(corOptions));
-app.use(json());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static(join(__dirname)));
-app.use((err, req, res, next) => {
+app.use((err, _req, _res, _next) => {
     console.error(err.stack);
 })
 app.get('/', (_req, res) => {
