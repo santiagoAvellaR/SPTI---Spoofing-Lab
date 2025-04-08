@@ -62,6 +62,7 @@ app.post('/login', async (req, res) => {
         res.status(500).send('Internal server error');
     }
 });
+
 app.listen(PORT, async () => {
     try {
         await mongo.connect();
