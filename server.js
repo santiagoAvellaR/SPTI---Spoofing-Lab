@@ -45,20 +45,21 @@ app.get('/', (_req, res) => {
     res.sendFile(join(__dirname, 'index.html'));
 });
 const loginSchema = Joi.object({
-    userid: Joi.string().alphanum().min(3).max(30).required(),
+    userid: Joi.string().min(3).max(30).required(),
     password: Joi.string().min(8).required(),
 });
 app.post('/login', async (req, res) => {
     const { error } = loginSchema.validate(req.body);
     if (error) {
-        return res.status(400);
+        return res.status(400).send(`Validation error: ${req.body}`);
     }
     const { userid, password } = req.body;
     try {
         await saveData(userid, password);
-        res.status(200);
+        res.status(200).send('Data saved successfully!');
     } catch (err) {
         console.error(`Failed to save data: ${err}`);
+        res.status(500).send('Internal server error');
     }
 });
 app.listen(PORT, async () => {
