@@ -14,7 +14,7 @@
   "packageManager": "pnpm@10.7.1",
   "dependencies": {
     "cors": "2.8.5",
-    "dotenv": "16.4.7",
+    "dotenv": "16.6.1",
     "express": "4.18.2",
     "joi": "17.13.3",
     "mongodb": "6.15.0"
